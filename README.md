@@ -16,13 +16,14 @@ public class ConstantHelper {
 ```  
 
 ## Prerequisitos
+- [Iconos Markdown](https://github-emoji-picker.vercel.app/)
 - [Java SDK](https://www.oracle.com/java/technologies/downloads/#jdk19-windows): jdk19-windows
 - [NetBeans IDE](https://netbeans.apache.org/download/index.html)
 - [PlantUML](https://plantuml.com/es/) diagramas uml
 - [Maven](https://maven.apache.org/download.cgi) Para Compilar y generar artefactos de ejecucion del proyecto
   - [Instalar manualmente Maven en Windows 10](https://dev.to/vanessa_corredor/instalar-manualmente-maven-en-windows-10-50pb) Tutorial para instalar Maven en windows 10
 
-## 🛠️ Compilar proyecto (Netbeans)
+##  :hammer_and_wrench: Compilar proyecto (Netbeans)
 1. Descarga el proyecto del repositorio de Github
 1. Abre netbeans
 1. En netbeans, en la barra de comandos presiona "Open Project" y agrega el proyecto.
@@ -34,7 +35,7 @@ public class ConstantHelper {
 1. Al realizar estas acciones se generará un archivo llamado **elibraryConsoleApp-1.0-SNAPSHOT.jar** que será nuestro ejecutable para la aplicación.
 1. Este archivo es necesario para ejecutar la aplicación por la consola del sistema operativo.
 
-## 🛠️ Compilar proyecto (Maven)
+## :hammer_and_wrench: Compilar proyecto (Maven)
 1. Para compilar y generar el archivo ejecutable **jar** del proyecto, primero debes tener configurado este tutorial en tu maquina [Instalar manualmente Maven en Windows 10](https://dev.to/vanessa_corredor/instalar-manualmente-maven-en-windows-10-50pb)
 2. Ejecuta el siguiente comando
 ```console
