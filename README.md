@@ -23,13 +23,15 @@ public class ConstantHelper {
 
 ## Compilar proyecto (Netbeans)
 1. Descarga el proyecto del repositorio de Github
-2. Abre netbeans
-3. En netbeans, en la barra de comandos presiona "Open Project" y agrega el proyecto.
+1. Abre netbeans
+1. En netbeans, en la barra de comandos presiona "Open Project" y agrega el proyecto.
 ![](assets/images/readme/open_project_netbeans.png)
-4. En la barra de comandos, presiona el boton "Clean and Build project"
+1. Modifica la clase **ConstantHelper.java** con la ruta del archivo de texto
+![](assets/images/readme/netbeans_path.png)
+1. En la barra de comandos, presiona el boton "Clean and Build project"
 ![](assets/images/readme/compile_and_build.png)
-5. Al realizar estas acciones se generará un archivo llamado **elibraryConsoleApp-1.0-SNAPSHOT.jar** que será nuestro ejecutable para la aplicación.
-6. Este archivo es necesario para ejecutar la aplicación por la consola del sistema operativo.
+1. Al realizar estas acciones se generará un archivo llamado **elibraryConsoleApp-1.0-SNAPSHOT.jar** que será nuestro ejecutable para la aplicación.
+1. Este archivo es necesario para ejecutar la aplicación por la consola del sistema operativo.
 
 ## Ejecutar aplicación (Windows)
 1. Desde la consola (CMD) de windows dirigete a la ubicación del archivo **elibraryConsoleApp-1.0-SNAPSHOT.jar**
