@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
- */
-
-package com.tecnologico.elibraryconsoleapp;
+package com.tecnologico.main;
 
 import com.tecnologico.view.AddBookInfoMenu;
 import com.tecnologico.view.ApplicationMenu;
@@ -15,9 +10,20 @@ import com.tecnologico.view.ListCountBookMenu;
  *
  * @author ronald.cuello
  */
-public class ElibraryConsoleApp {
+public class App {
 
     public static void main(String[] args) {
+        try{
+            
+            startApplication();
+            
+        } catch(Exception ex){
+            System.out.println("Something horrible happend o.O ");
+            ex.printStackTrace();
+        }
+    }
+    
+    public static void startApplication(){
         int opcion = 0;
         
         while(opcion!= 5){
