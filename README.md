@@ -37,15 +37,17 @@ public class ConstantHelper {
 
 ## :hammer_and_wrench: Compilar proyecto (Maven)
 1. Para compilar y generar el archivo ejecutable **jar** del proyecto, primero debes tener configurado este tutorial en tu maquina [Instalar manualmente Maven en Windows 10](https://dev.to/vanessa_corredor/instalar-manualmente-maven-en-windows-10-50pb)
-2. Ejecuta el siguiente comando
+2. Con un bloc de notas modifica la clase ConstantHelper.java con la ubicación del archivo de texto en su equipo.
+![](assets/images/readme/notepad.png)
+3. Ejecuta el siguiente comando
 ```console
 C:\Developer\Java\source\elibraryConsoleApp\> mvn clean install 
 ``` 
 ![](assets/images/readme/compile%20maven.png)
 
-3. Al realizar estas acciones se generará un archivo llamado **elibraryConsoleApp-1.0-SNAPSHOT.jar** que será nuestro ejecutable para la aplicación.
+4. Al realizar estas acciones se generará un archivo llamado **elibraryConsoleApp-1.0-SNAPSHOT.jar** que será nuestro ejecutable para la aplicación.
 
-4. Este archivo es necesario para ejecutar la aplicación por la consola del sistema operativo.
+5. Este archivo es necesario para ejecutar la aplicación por la consola del sistema operativo.
 
 ## :atom: Ejecutar aplicación (Windows)
 1. Desde la consola (CMD) de windows dirigete a la ubicación del archivo **elibraryConsoleApp-1.0-SNAPSHOT.jar**
