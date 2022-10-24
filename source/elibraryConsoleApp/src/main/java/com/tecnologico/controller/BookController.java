@@ -35,7 +35,7 @@ public class BookController {
                 libros.add(libro);
             }
         }catch(Exception ex){
-            
+            ex.printStackTrace();
         }
         return libros;
     }

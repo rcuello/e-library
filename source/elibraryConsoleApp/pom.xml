@@ -47,6 +47,8 @@
                                 <directory>${basedir}</directory>
                                 <includes>
                                     <include>configuracion.properties</include>
+                                    <include>books.txt</include>
+                                    <include>users.txt</include>
                                 </includes>
                             </resource>
                         </resources>
@@ -54,6 +56,7 @@
                 </execution>
             </executions>
         </plugin>
+       
     </plugins>
     </build>
 </project>

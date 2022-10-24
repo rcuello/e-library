@@ -1,8 +1,9 @@
 package com.tecnologico.main;
 
-import com.tecnologico.util.ParameterHelper;
+import com.tecnologico.model.User;
 import com.tecnologico.view.AddBookInfoMenu;
 import com.tecnologico.view.ApplicationMenu;
+import com.tecnologico.view.BannerView;
 import com.tecnologico.view.ListAllBookMenu;
 import com.tecnologico.view.ListAllBooksByAuthorMenu;
 import com.tecnologico.view.ListCountBookMenu;
@@ -15,48 +16,46 @@ public class App {
 
     public static void main(String[] args) {
 
-        //Mostrar banner de la aplicación
-        showBanner();
+        User user = ApplicationMenu.showLogin();
         
-        try{
+        if(user!=null){
+            //Mostrar banner de la aplicación
+            BannerView.show();
             
-            //Iniciar aplicación
-            startApplication();
-            
-        } catch(Exception ex){
-            System.out.println("Something horrible happend o.O ");
-            ex.printStackTrace();
+            try{
+                switch (user.getRoleName()) {
+                    case "administrator":
+                        runAdministratorApplication(user);
+                        break;
+
+                    case "student":
+                        runStudentApplication(user);
+                        break;
+
+                    case "teacher":
+                        runTeacherApplication(user);
+                        break;
+
+                    default:
+                        System.out.println("Invalid rolename");
+                }
+            } catch(Exception ex){
+                System.out.println("Something horrible happend o.O ");
+                ex.printStackTrace();
+            }
+        }else{
+            System.out.println("Invalid credentials.");
+            System.out.println("Good bye!");
         }
     }
     
-    public static void showBanner(){
-        //Ascii banner generator
-        //https://www.askapache.com/online-tools/figlet-ascii/
-        System.out.println("""
-                            ______      _      _ _                          
-                           |  ____|    | |    (_) |                         
-                           | |__ ______| |     _| |__  _ __ __ _ _ __ _   _ 
-                           |  __|______| |    | | '_ \\| '__/ _` | '__| | | |
-                           | |____     | |____| | |_) | | | (_| | |  | |_| |
-                           |______|    |______|_|_.__/|_|   \\__,_|_| \\__, |
-                                                                       __/ |
-                                                                      |___/ 
-                           """);
-        String author = ParameterHelper.getInstance().getParameter("app.author");
-        String version = ParameterHelper.getInstance().getParameter("app.version");
-        String url=ParameterHelper.getInstance().getParameter("app.url");
-        
-        System.out.println("-------< version "+version+" >--------");
-        System.out.println("-------< author: "+author+" >--------");
-        System.out.println("<<  url: "+url+" >>");
-        
-    }
-    public static void startApplication(){
+    
+    public static void runAdministratorApplication(User user){
         int opcion = 0;
         
         while(opcion!= 5){
             
-            opcion = ApplicationMenu.showMenuOption();
+            opcion = ApplicationMenu.showAdministratorMenuOption(user);
             
             switch (opcion) {
                 case 1:
@@ -72,6 +71,53 @@ public class App {
                     ListCountBookMenu.show();
                     break;
                 case 5:
+                    System.out.println("Good bye!");
+                    break;
+                default:
+                    System.out.println("Invalid option!");
+            }
+        }
+    }
+    public static void runStudentApplication(User user){
+        int opcion = 0;
+        
+        while(opcion!= 3){
+            
+            opcion = ApplicationMenu.showStudentMenuOption(user);
+            
+            switch (opcion) {
+                case 1:
+                    ListAllBookMenu.show();
+                    break;
+                case 2:
+                    ListAllBooksByAuthorMenu.show();
+                    break;
+                case 3:
+                    System.out.println("Good bye!");
+                    break;
+                default:
+                    System.out.println("Invalid option!");
+            }
+        }
+    }
+    public static void runTeacherApplication(User user){
+        int opcion = 0;
+        
+        while(opcion!= 4){
+            
+            opcion = ApplicationMenu.showTeacherMenuOption(user);
+            
+            switch (opcion) {
+                case 1:
+                    ListAllBookMenu.show();
+                    break;
+                case 2:
+                    ListAllBooksByAuthorMenu.show();
+                    break;
+                case 3:
+                    ListCountBookMenu.show();
+                    break;
+                case 4:
                     System.out.println("Good bye!");
                     break;
                 default:
