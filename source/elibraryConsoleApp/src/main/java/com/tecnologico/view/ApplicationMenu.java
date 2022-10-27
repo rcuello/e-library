@@ -35,14 +35,13 @@ public class ApplicationMenu {
         
         ConsoleColors.printLineInGreenUnderline("********###### WELCOME TO E-LIBRARY #####********");
         System.out.println("Welcome home, "+user.getName());
-        System.out.println("");
-        System.out.println("""
-               1. Add book information
-               2. List all books 
-               3. List all books of given author           
-               4. List the count of books in the library  
-               5. Exit           
-               """); 
+        System.out.println("\n"
+               +"1. Add book information"
+               +"2. List all books" 
+               +"3. List all books of given author"           
+               +"4. List the count of books in the library"  
+               +"5. Exit"           
+               +"\n"); 
         ConsoleColors.printInYellow("Enter one of the above: ");
         
         String valorOpcion = teclado.next();
@@ -58,12 +57,11 @@ public class ApplicationMenu {
         
         ConsoleColors.printLineInGreenUnderline("********###### WELCOME TO E-LIBRARY #####********");
         System.out.println("Hi there! "+user.getName()+" "+user.getLastName());
-        System.out.println("");
-        System.out.println("""
-               1. List all books 
-               2. List all books of given author           
-               3. Exit           
-               """); 
+        System.out.println("\n"
+               +"\n1. List all books" 
+               +"\n2. List all books of given author"           
+               +"\n3. Exit"           
+               +"\n"); 
         ConsoleColors.printInYellow("Enter one of the above: ");
         
         String valorOpcion = teclado.next();
@@ -79,13 +77,13 @@ public class ApplicationMenu {
         
         ConsoleColors.printLineInGreenUnderline("********###### WELCOME TO E-LIBRARY #####********");
         System.out.println("Hello professor, "+user.getName());
-        System.out.println("");
-        System.out.println("""
-               1. List all books 
-               2. List all books of given author           
-               3. List the count of books in the library  
-               4. Exit           
-               """); 
+        System.out.println("\n"
+               +"\n1. List all books "
+               +"\n2. List all books of given author           "
+               +"\n3. List the count of books in the library  "
+               +"\n4. Exit           "
+               +"\n"); 
+        
         ConsoleColors.printInYellow("Enter one of the above: ");
         
         String valorOpcion = teclado.next();
