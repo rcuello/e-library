@@ -50,10 +50,11 @@ public class ApplicationMenu {
                +"\n+ MENU                                          |"
                +"\n+-----------------------------------------------+"
                +"\n1. Add book information                       |"
-               +"\n2. List all books                             |" 
-               +"\n3. List all books of given author             |"           
-               +"\n4. List the count of books in the library     |"  
-               +"\n5. Exit                                       |" 
+               +"\n2. Add new user                               |"
+               +"\n3. List all books                             |" 
+               +"\n4. List all books of given author             |"           
+               +"\n5. List the count of books in the library     |"  
+               +"\n6. Exit                                       |" 
                +"\n+-----------------------------------------------+"
                +"\n"); 
         ConsoleColors.printInYellow("Enter one of the above: ");

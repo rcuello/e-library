@@ -3,6 +3,7 @@ package com.tecnologico.main;
 import com.tecnologico.exceptions.BookExistsException;
 import com.tecnologico.model.User;
 import com.tecnologico.view.AddBookInfoMenu;
+import com.tecnologico.view.AddNewUserMenu;
 import com.tecnologico.view.ApplicationMenu;
 import com.tecnologico.view.ListAllBookMenu;
 import com.tecnologico.view.ListAllBooksByAuthorMenu;
@@ -53,7 +54,7 @@ public class App {
     public static void runAdministratorApplication() throws IOException, BookExistsException{
         int opcion = 0;
         
-        while(opcion!= 5){
+        while(opcion!= 6){
             
             opcion = ApplicationMenu.showAdministratorMenuOption();
             
@@ -62,15 +63,18 @@ public class App {
                     AddBookInfoMenu.show();
                     break;
                 case 2:
-                    ListAllBookMenu.show();
+                    AddNewUserMenu.show();
                     break;
                 case 3:
-                    ListAllBooksByAuthorMenu.show();
+                    ListAllBookMenu.show();
                     break;
                 case 4:
-                    ListCountBookMenu.show();
+                    ListAllBooksByAuthorMenu.show();
                     break;
                 case 5:
+                    ListCountBookMenu.show();
+                    break;
+                case 6:
                     System.out.println("Good bye!");
                     break;
                 default:
