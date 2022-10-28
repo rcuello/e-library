@@ -2,6 +2,7 @@
 package com.tecnologico.view;
 
 import com.tecnologico.controller.BookController;
+import com.tecnologico.exceptions.BookExistsException;
 import com.tecnologico.model.Book;
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,7 +12,7 @@ import java.util.Scanner;
  * @author ronald.cuello
  */
 public class AddBookInfoMenu {
-    public static void show() throws IOException{
+    public static void show() throws IOException, BookExistsException{
         
         BookController controller=new BookController();
         System.out.format("+---------------------+%n");
@@ -28,7 +29,7 @@ public class AddBookInfoMenu {
         System.out.println("Enter author name: ");
         String author = scanner.nextLine();
 
-        System.out.println("Enter price currency: ");
+        System.out.println("Enter currency simbol: ");
         String currency=scanner.nextLine();
         
         System.out.println("Enter book price: ");
@@ -41,11 +42,18 @@ public class AddBookInfoMenu {
         book.setPrice(price);
         book.setPriceCurrency(currency);
         
-        controller.addBook(book);
+        //Save the book into the plain file
+        boolean isBookSaved = controller.addBook(book);
         
-        System.out.format("+---------------------+%n");
-        System.out.format("| Success             |%n");
-        System.out.format("+---------------------+%n");
-
+        if(isBookSaved){
+            System.out.format("+---------------------+%n");
+            System.out.format("| Success             |%n");
+            System.out.format("+---------------------+%n");
+        }else{
+            System.out.format("+-----------------------------+%n");
+            System.out.format("| Error: Book already exists! |%n");
+            System.out.format("+-----------------------------+%n");
+        }
+        
     }
 }

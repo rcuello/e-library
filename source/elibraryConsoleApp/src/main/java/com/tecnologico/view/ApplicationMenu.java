@@ -46,11 +46,15 @@ public class ApplicationMenu {
         Scanner teclado = new Scanner(System.in);
         
         System.out.println(""
-               +"\n1. Add book information"
-               +"\n2. List all books" 
-               +"\n3. List all books of given author"           
-               +"\n4. List the count of books in the library"  
-               +"\n5. Exit"           
+               +"+-----------------------------------------------+"
+               +"\n+ MENU                                          |"
+               +"\n+-----------------------------------------------+"
+               +"\n1. Add book information                       |"
+               +"\n2. List all books                             |" 
+               +"\n3. List all books of given author             |"           
+               +"\n4. List the count of books in the library     |"  
+               +"\n5. Exit                                       |" 
+               +"\n+-----------------------------------------------+"
                +"\n"); 
         ConsoleColors.printInYellow("Enter one of the above: ");
         
@@ -66,9 +70,13 @@ public class ApplicationMenu {
         Scanner teclado = new Scanner(System.in);
         
         System.out.println(""
-               +"\n1. List all books" 
-               +"\n2. List all books of given author"           
-               +"\n3. Exit"           
+               +"+-----------------------------------------------+"
+               +"\n+ MENU                                          |"
+               +"\n+-----------------------------------------------+"
+               +"\n1. List all books                             |" 
+               +"\n2. List all books of given author             |"           
+               +"\n3. Exit                                       |"    
+               +"\n+-----------------------------------------------+"
                +"\n"); 
         ConsoleColors.printInYellow("Enter one of the above: ");
         
@@ -84,10 +92,14 @@ public class ApplicationMenu {
         Scanner teclado = new Scanner(System.in);
         
         System.out.println(""
-               +"\n1. List all books "
-               +"\n2. List all books of given author           "
-               +"\n3. List the count of books in the library  "
-               +"\n4. Exit           "
+               +"+-----------------------------------------------+"
+               +"\n+ MENU                                          |"
+               +"\n+-----------------------------------------------+"
+               +"\n1. List all books                             |"
+               +"\n2. List all books of given author             |"
+               +"\n3. List the count of books in the library     |"
+               +"\n4. Exit                                       |"
+               +"\n+-----------------------------------------------+"
                +"\n"); 
         
         ConsoleColors.printInYellow("Enter one of the above: ");

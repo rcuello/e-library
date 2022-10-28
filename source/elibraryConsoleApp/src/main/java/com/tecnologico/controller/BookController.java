@@ -1,8 +1,8 @@
 
 package com.tecnologico.controller;
 
+import com.tecnologico.exceptions.BookExistsException;
 import com.tecnologico.model.Book;
-import com.tecnologico.util.ConstantHelper;
 import com.tecnologico.util.ConvertHelper;
 import com.tecnologico.util.ParameterHelper;
 import java.io.File;
@@ -60,15 +60,36 @@ public class BookController {
         return busqueda;
     }
     
-    public void addBook(Book book) throws IOException{
+    
+    /**
+     * Devuelve un valor logico si el libro es almacenado en el archivo 
+     * @return  True si el libro es almacenado en el archivo , false si no se pudo guardar el archivo
+     */
+    public boolean addBook(Book book) throws IOException{
+        
         ArrayList<Book> libros=this.getBooks();
         
-        //TODO: Agregar validacion de codigos repetidos
+        Book libroEncontrado=null;
+        
+        //Verificar que el libro no se encuentre almacenado en el archivo
+        for(Book item : libros){
+            if(item.getIsbnCode().toLowerCase().equals(book.getIsbnCode().toLowerCase())){
+                libroEncontrado = item;
+            }
+        }
+        
+        //El codigo ya existe en el archivo, por lo tanto el nuevo libro
+        //no se debe almacenar
+        if(libroEncontrado!=null){
+            return false;
+        }
+        
         libros.add(book);
         
+        //Se procede a guardar todos los libros en el archivo plano
         String rutaArchivo = ParameterHelper.getInstance().getParameter("books.file");
         File archivo = new File(rutaArchivo);
-        
+
         FileWriter myWriter = new FileWriter(archivo);
         for(Book item : libros){
             //9780132350884,Clean Code,Robert C. Martin,44.99,USD$
@@ -82,11 +103,13 @@ public class BookController {
                     +","
                     +item.getPriceCurrency()
                     +"\n"
-                            
+
             ;
             myWriter.write(line);
         }
+
+        myWriter.close();
         
-	myWriter.close();
+        return true;
     }
 }

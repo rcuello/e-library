@@ -1,5 +1,6 @@
 package com.tecnologico.main;
 
+import com.tecnologico.exceptions.BookExistsException;
 import com.tecnologico.model.User;
 import com.tecnologico.view.AddBookInfoMenu;
 import com.tecnologico.view.ApplicationMenu;
@@ -49,7 +50,7 @@ public class App {
     }
     
     
-    public static void runAdministratorApplication() throws IOException{
+    public static void runAdministratorApplication() throws IOException, BookExistsException{
         int opcion = 0;
         
         while(opcion!= 5){
