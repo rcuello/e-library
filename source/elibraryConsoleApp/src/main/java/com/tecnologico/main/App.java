@@ -3,10 +3,10 @@ package com.tecnologico.main;
 import com.tecnologico.model.User;
 import com.tecnologico.view.AddBookInfoMenu;
 import com.tecnologico.view.ApplicationMenu;
-import com.tecnologico.view.BannerView;
 import com.tecnologico.view.ListAllBookMenu;
 import com.tecnologico.view.ListAllBooksByAuthorMenu;
 import com.tecnologico.view.ListCountBookMenu;
+import java.io.IOException;
 
 /**
  *
@@ -19,21 +19,20 @@ public class App {
         User user = ApplicationMenu.showLogin();
         
         if(user!=null){
-            //Mostrar banner de la aplicación
-            BannerView.show();
             
+            ApplicationMenu.showWelcomeMessage(user);
             try{
                 switch (user.getRoleName()) {
                     case "administrator":
-                        runAdministratorApplication(user);
+                        runAdministratorApplication();
                         break;
 
                     case "student":
-                        runStudentApplication(user);
+                        runStudentApplication();
                         break;
 
                     case "teacher":
-                        runTeacherApplication(user);
+                        runTeacherApplication();
                         break;
 
                     default:
@@ -50,12 +49,12 @@ public class App {
     }
     
     
-    public static void runAdministratorApplication(User user){
+    public static void runAdministratorApplication() throws IOException{
         int opcion = 0;
         
         while(opcion!= 5){
             
-            opcion = ApplicationMenu.showAdministratorMenuOption(user);
+            opcion = ApplicationMenu.showAdministratorMenuOption();
             
             switch (opcion) {
                 case 1:
@@ -78,12 +77,12 @@ public class App {
             }
         }
     }
-    public static void runStudentApplication(User user){
+    public static void runStudentApplication(){
         int opcion = 0;
         
         while(opcion!= 3){
             
-            opcion = ApplicationMenu.showStudentMenuOption(user);
+            opcion = ApplicationMenu.showStudentMenuOption();
             
             switch (opcion) {
                 case 1:
@@ -100,12 +99,12 @@ public class App {
             }
         }
     }
-    public static void runTeacherApplication(User user){
+    public static void runTeacherApplication(){
         int opcion = 0;
         
         while(opcion!= 4){
             
-            opcion = ApplicationMenu.showTeacherMenuOption(user);
+            opcion = ApplicationMenu.showTeacherMenuOption();
             
             switch (opcion) {
                 case 1:

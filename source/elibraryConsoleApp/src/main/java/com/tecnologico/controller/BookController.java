@@ -4,7 +4,10 @@ package com.tecnologico.controller;
 import com.tecnologico.model.Book;
 import com.tecnologico.util.ConstantHelper;
 import com.tecnologico.util.ConvertHelper;
+import com.tecnologico.util.ParameterHelper;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,9 +20,11 @@ public class BookController {
         ArrayList<Book> libros = new ArrayList<Book>();
         
         try{
-            File archivo = new File(ConstantHelper.BookFilePath);
+            String rutaArchivo = ParameterHelper.getInstance().getParameter("books.file");
+            File archivo = new File(rutaArchivo);
             Scanner scan=new Scanner(archivo);
             
+            //Sobre escribe el archivo con todos los libros de la coleccion
             while(scan.hasNextLine()){
                 String[] atributos = scan.nextLine().split(",");
                 
@@ -53,5 +58,35 @@ public class BookController {
         }
         
         return busqueda;
+    }
+    
+    public void addBook(Book book) throws IOException{
+        ArrayList<Book> libros=this.getBooks();
+        
+        //TODO: Agregar validacion de codigos repetidos
+        libros.add(book);
+        
+        String rutaArchivo = ParameterHelper.getInstance().getParameter("books.file");
+        File archivo = new File(rutaArchivo);
+        
+        FileWriter myWriter = new FileWriter(archivo);
+        for(Book item : libros){
+            //9780132350884,Clean Code,Robert C. Martin,44.99,USD$
+            String line= item.getIsbnCode()
+                    +","
+                    +item.getName()
+                    +","
+                    +item.getAuthor()
+                    +","
+                    +item.getPrice()
+                    +","
+                    +item.getPriceCurrency()
+                    +"\n"
+                            
+            ;
+            myWriter.write(line);
+        }
+        
+	myWriter.close();
     }
 }
