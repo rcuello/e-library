@@ -1,16 +1,12 @@
 package com.tecnologico.main;
 
-import com.tecnologico.exceptions.BookExistsException;
 import com.tecnologico.model.User;
 import com.tecnologico.util.ParameterHelper;
-import com.tecnologico.view.AddBookInfoMenu;
-import com.tecnologico.view.AddNewUserMenu;
-import com.tecnologico.view.ApplicationMenu;
-import com.tecnologico.view.ListAllBookMenu;
-import com.tecnologico.view.ListAllBooksByAuthorMenu;
-import com.tecnologico.view.ListCountBookMenu;
+import com.tecnologico.view.options.AdministratorOption;
+import com.tecnologico.view.options.StudentOption;
+import com.tecnologico.view.options.TeacherOption;
+import com.tecnologico.view.options.UserOption;
 import java.io.File;
-import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -56,23 +52,24 @@ public class App {
     }
     
     public static void startApplication(){
-        User user = ApplicationMenu.showLogin();
+        User user = UserOption.showLogin();
         
         if(user!=null){
             
-            ApplicationMenu.showWelcomeMessage(user);
+            UserOption.showWelcomeMessage(user);
+            
             try{
                 switch (user.getRoleName()) {
                     case "administrator":
-                        runAdministratorApplication();
+                        AdministratorOption.runApplication();
                         break;
 
                     case "student":
-                        runStudentApplication();
+                        StudentOption.runApplication();
                         break;
 
                     case "teacher":
-                        runTeacherApplication();
+                        TeacherOption.runApplication();
                         break;
 
                     default:
@@ -83,86 +80,9 @@ public class App {
                 ex.printStackTrace();
             }
         }else{
-            System.out.println("Invalid credentials.");
-            System.out.println("Good bye!");
+            UserOption.showInvalidCrentials();
         }
-    }
-    public static void runAdministratorApplication() throws IOException, BookExistsException{
-        int opcion = 0;
         
-        while(opcion!= 6){
-            
-            opcion = ApplicationMenu.showAdministratorMenuOption();
-            
-            switch (opcion) {
-                case 1:
-                    AddBookInfoMenu.show();
-                    break;
-                case 2:
-                    AddNewUserMenu.show();
-                    break;
-                case 3:
-                    ListAllBookMenu.show();
-                    break;
-                case 4:
-                    ListAllBooksByAuthorMenu.show();
-                    break;
-                case 5:
-                    ListCountBookMenu.show();
-                    break;
-                case 6:
-                    System.out.println("Good bye!");
-                    break;
-                default:
-                    System.out.println("Invalid option!");
-            }
-        }
-    }
-    public static void runStudentApplication(){
-        int opcion = 0;
         
-        while(opcion!= 3){
-            
-            opcion = ApplicationMenu.showStudentMenuOption();
-            
-            switch (opcion) {
-                case 1:
-                    ListAllBookMenu.show();
-                    break;
-                case 2:
-                    ListAllBooksByAuthorMenu.show();
-                    break;
-                case 3:
-                    System.out.println("Good bye!");
-                    break;
-                default:
-                    System.out.println("Invalid option!");
-            }
-        }
-    }
-    public static void runTeacherApplication(){
-        int opcion = 0;
-        
-        while(opcion!= 4){
-            
-            opcion = ApplicationMenu.showTeacherMenuOption();
-            
-            switch (opcion) {
-                case 1:
-                    ListAllBookMenu.show();
-                    break;
-                case 2:
-                    ListAllBooksByAuthorMenu.show();
-                    break;
-                case 3:
-                    ListCountBookMenu.show();
-                    break;
-                case 4:
-                    System.out.println("Good bye!");
-                    break;
-                default:
-                    System.out.println("Invalid option!");
-            }
-        }
-    }
+    } 
 }

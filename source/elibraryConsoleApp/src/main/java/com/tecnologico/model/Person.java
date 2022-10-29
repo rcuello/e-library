@@ -10,6 +10,12 @@ public abstract class Person {
     private String email;
 
     /**
+     * @return the full name
+     */
+    public String getFullName() {
+        return name+" "+lastName;
+    }
+    /**
      * @return the name
      */
     public String getName() {

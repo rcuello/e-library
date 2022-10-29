@@ -1,3 +1,4 @@
+
 package com.tecnologico.view;
 
 import com.tecnologico.controller.BookController;
@@ -9,8 +10,8 @@ import java.util.Scanner;
  *
  * @author ronald.cuello
  */
-public class ListCountBookMenu {
-    public static void show(){
+public class ReportMenu {
+    public static void showCountBooks(){
         BookController controller = new BookController();
         
         ArrayList<Book> libros=controller.getBooks();
@@ -28,5 +29,4 @@ public class ListCountBookMenu {
         System.out.println("press any to continue...");
         new Scanner(System.in).nextLine();
     }
-    
 }

@@ -1,16 +1,43 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.tecnologico.view;
 
 import com.tecnologico.controller.UserController;
 import com.tecnologico.model.User;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  *
  * @author ronald.cuello
  */
-public class AddNewUserMenu {
-    public static void show() throws IOException{
+public class UserMenu {
+    public static void showAllUsers(){
+        UserController controller = new UserController();
+        
+        ArrayList<User> users =controller.getUsers();
+        
+        String leftAlignFormat = "| %-30s | %-10s   |%n";
+        System.out.format("+--------------------------------+------------------+%n");
+        System.out.format("| Fullname                       | username         |%n");
+        System.out.format("+--------------------------------+------------------+%n");
+        
+        
+
+        for(User user : users){
+            System.out.format(leftAlignFormat, user.getFullName(), user.getUsername());
+        }
+        
+        System.out.format("+--------------------------------+------------------+%n");
+        
+        System.out.println("press any to continue...");
+        new Scanner(System.in).nextLine();
+    }
+    
+    public static void showAddNewUser() throws IOException{
         System.out.format("+---------------------+%n");
         System.out.format("| Adding new User     |%n");
         System.out.format("+---------------------+%n");
@@ -64,5 +91,12 @@ public class AddNewUserMenu {
         System.out.println("press any to continue...");
         new Scanner(System.in).nextLine();
         
+    }
+    
+    public static void showDeleteUser(){
+        System.out.println("Not available !");
+        
+        System.out.println("press any to continue...");
+        new Scanner(System.in).nextLine();
     }
 }
