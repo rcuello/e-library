@@ -2,6 +2,7 @@
 package com.tecnologico.view;
 
 import com.tecnologico.controller.BookController;
+import com.tecnologico.controller.UserController;
 import com.tecnologico.model.Book;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -116,7 +117,26 @@ public class BookMenu {
         
     }
     
-    public static void showDeleteBook(){
+    public static void showDeleteBook() throws IOException{
+        System.out.format("+---------------------+%n");
+        System.out.format("| Delete Book     |%n");
+        System.out.format("+---------------------+%n");
         
+        BookController controller=new BookController();
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Enter book isbn code: ");
+        String isbnCode = scanner.nextLine();
+        
+        boolean isDeleted = controller.deleteByIsbn(isbnCode);
+        
+        if(isDeleted){
+            System.out.format("+---------------------+%n");
+            System.out.format("| Success             |%n");
+            System.out.format("+---------------------+%n");
+        }
+        
+        System.out.println("press any to continue...");
+        new Scanner(System.in).nextLine();
     }
 }

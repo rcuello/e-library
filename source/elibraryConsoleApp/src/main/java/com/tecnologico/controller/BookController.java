@@ -111,4 +111,50 @@ public class BookController {
         
         return true;
     }
+    
+    public boolean deleteByIsbn(String isbn) throws IOException{
+        
+        ArrayList<Book> books = this.getBooks();
+        
+        int position=-1;
+        
+        for(int i=0;i< books.size();i++){
+            Book book= books.get(i);
+            
+            if(book.getIsbnCode().equals(isbn)){
+                position=i;
+                break;
+            }
+        }
+        
+        if(position!=-1){
+            books.remove(position);
+            
+            String rutaArchivo = ParameterHelper.getInstance().getParameter("books.file");
+            File archivo = new File(rutaArchivo);
+
+            FileWriter myWriter = new FileWriter(archivo);
+            for(Book item : books){
+                //9780132350884,Clean Code,Robert C. Martin,44.99,USD$
+                String line= item.getIsbnCode()
+                    +","
+                    +item.getName()
+                    +","
+                    +item.getAuthor()
+                    +","
+                    +item.getPrice()
+                    +","
+                    +item.getPriceCurrency()
+                    +"\n";
+                
+                    myWriter.write(line);
+            }
+
+            myWriter.close();
+            
+            return true;
+        }
+        
+        return false;
+    }
 }
