@@ -9,7 +9,7 @@ echo Cambiando entorno java a la version %JAVA_HOME%
 
 echo Compilar proyecto
 
-%Maven_Home% clean install
+call %Maven_Home% clean install
 
 
 pause
