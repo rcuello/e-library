@@ -93,8 +93,24 @@ public class UserMenu {
         
     }
     
-    public static void showDeleteUser(){
-        System.out.println("Not available !");
+    public static void showDeleteUser() throws IOException{
+        System.out.format("+---------------------+%n");
+        System.out.format("| Delete User     |%n");
+        System.out.format("+---------------------+%n");
+        
+        UserController controller=new UserController();
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Enter username: ");
+        String username = scanner.nextLine();
+        
+        boolean isDeleted = controller.deleteByUsername(username);
+        
+        if(isDeleted){
+            System.out.format("+---------------------+%n");
+            System.out.format("| Success             |%n");
+            System.out.format("+---------------------+%n");
+        }
         
         System.out.println("press any to continue...");
         new Scanner(System.in).nextLine();

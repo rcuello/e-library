@@ -105,4 +105,55 @@ public class UserController {
         
         return true;
     }
+    
+    public boolean deleteByUsername(String username) throws IOException{
+        
+        ArrayList<User> users = this.getUsers();
+        
+        int position=-1;
+        
+        for(int i=0;i< users.size();i++){
+            User user= users.get(i);
+            
+            if(user.getUsername().equals(username)){
+                position=i;
+                break;
+            }
+        }
+        
+        if(position!=-1){
+            users.remove(position);
+            
+            String rutaArchivo = ParameterHelper.getInstance().getParameter("users.file");
+            File archivo = new File(rutaArchivo);
+
+            FileWriter myWriter = new FileWriter(archivo);
+            for(User item : users){
+                //ID01,admin,admin,administrator,Jorge,Pascual,dsoler@morales.net
+                String line= item.getId()
+                        +","
+                        +item.getUsername()
+                        +","
+                        +item.getPassword()
+                        +","
+                        +item.getRoleName()
+                        +","
+                        +item.getName()
+                        +","
+                        +item.getLastName()
+                        +","
+                        +item.getEmail()
+                        +"\n"
+
+                ;
+                myWriter.write(line);
+            }
+
+            myWriter.close();
+            
+            return true;
+        }
+        
+        return false;
+    }
 }
