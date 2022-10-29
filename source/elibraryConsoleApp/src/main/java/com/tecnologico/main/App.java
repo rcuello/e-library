@@ -2,13 +2,16 @@ package com.tecnologico.main;
 
 import com.tecnologico.exceptions.BookExistsException;
 import com.tecnologico.model.User;
+import com.tecnologico.util.ParameterHelper;
 import com.tecnologico.view.AddBookInfoMenu;
 import com.tecnologico.view.AddNewUserMenu;
 import com.tecnologico.view.ApplicationMenu;
 import com.tecnologico.view.ListAllBookMenu;
 import com.tecnologico.view.ListAllBooksByAuthorMenu;
 import com.tecnologico.view.ListCountBookMenu;
+import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  *
@@ -17,7 +20,42 @@ import java.io.IOException;
 public class App {
 
     public static void main(String[] args) {
-
+        
+        //Verificar si existen los archivos
+        String booksFilePath = ParameterHelper.getInstance().getParameter("books.file");
+        String usersFilePath = ParameterHelper.getInstance().getParameter("users.file");
+        
+        File bookFile = new File(booksFilePath);
+        File usersFile= new File(usersFilePath);
+        
+        if(bookFile.exists() && usersFile.exists()){
+            
+            //Iniciar aplicación
+            startApplication();
+            
+        }else{
+             String error=""
+                 +"+-------------------------------------------------------+"
+               +"\n+ ERROR Starting application *                          |"
+               +"\n+-------------------------------------------------------+";
+             
+            if(!bookFile.exists()){
+                error+="\n File "+bookFile.getName()+" Not Found";
+            }
+            
+            if(!usersFile.exists()){
+                error+="\n File "+usersFile.getName()+" Not Found";
+            }
+            
+            System.out.println(error);
+            
+            System.out.println("\nPress any key to exit...");
+            new Scanner(System.in).nextLine();
+        }
+        
+    }
+    
+    public static void startApplication(){
         User user = ApplicationMenu.showLogin();
         
         if(user!=null){
@@ -49,8 +87,6 @@ public class App {
             System.out.println("Good bye!");
         }
     }
-    
-    
     public static void runAdministratorApplication() throws IOException, BookExistsException{
         int opcion = 0;
         

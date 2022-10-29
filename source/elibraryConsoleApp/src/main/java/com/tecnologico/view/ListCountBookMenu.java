@@ -3,6 +3,7 @@ package com.tecnologico.view;
 import com.tecnologico.controller.BookController;
 import com.tecnologico.model.Book;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -23,6 +24,9 @@ public class ListCountBookMenu {
         System.out.format("+-----------------------------+-------------------+%n");
         System.out.format(leftAlignFormat, "Total Count", libros.size()+" book(s)");
         System.out.format("+-----------------------------+-------------------+%n");
+        
+        System.out.println("press any to continue...");
+        new Scanner(System.in).nextLine();
     }
     
 }

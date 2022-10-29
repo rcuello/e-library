@@ -61,5 +61,8 @@ public class AddNewUserMenu {
         }
         
         
+        System.out.println("press any to continue...");
+        new Scanner(System.in).nextLine();
+        
     }
 }

@@ -3,7 +3,6 @@ package com.tecnologico.view;
 
 import com.tecnologico.controller.UserController;
 import com.tecnologico.model.User;
-import com.tecnologico.util.ConsoleColors;
 import com.tecnologico.util.ConvertHelper;
 import com.tecnologico.util.ParameterHelper;
 import java.util.Scanner;
@@ -23,7 +22,6 @@ public class ApplicationMenu {
         String username=teclado.next();
         System.out.print("Enter password: ");
         String password=teclado.next();
-        System.out.println("-------------------------------------------");
         
         User user = userController.findUser(username, password);
         return user;
@@ -33,11 +31,15 @@ public class ApplicationMenu {
         String author = ParameterHelper.getInstance().getParameter("app.author");
         String version = ParameterHelper.getInstance().getParameter("app.version");
         String url=ParameterHelper.getInstance().getParameter("app.url");
-            
-        System.out.println("********###### WELCOME TO E-LIBRARY #####********");
-        System.out.println("-------< version "+version+" >--------");
-        System.out.println("-------< author: "+author+" >--------");
-        System.out.println("<<  url: "+url+" >>");
+        
+        String logo=""
+                 +"+-------------------------------------------------------+"
+               +"\n+ WELCOME TO E-LIBRARY                                  |"
+               +"\n+-------------------------------------------------------+";
+        System.out.println(logo);
+        System.out.println("\t version "+version);
+        System.out.println("\t author: "+author);
+        System.out.println("\t url: "+url);
         System.out.println("");
         System.out.println("Hello, "+user.getName());
     }
@@ -57,7 +59,7 @@ public class ApplicationMenu {
                +"\n6. Exit                                       |" 
                +"\n+-----------------------------------------------+"
                +"\n"); 
-        ConsoleColors.printInYellow("Enter one of the above: ");
+        System.out.println("Enter one of the above: ");
         
         String valorOpcion = teclado.next();
         
@@ -79,7 +81,7 @@ public class ApplicationMenu {
                +"\n3. Exit                                       |"    
                +"\n+-----------------------------------------------+"
                +"\n"); 
-        ConsoleColors.printInYellow("Enter one of the above: ");
+        System.out.println("Enter one of the above: ");
         
         String valorOpcion = teclado.next();
         
@@ -103,7 +105,7 @@ public class ApplicationMenu {
                +"\n+-----------------------------------------------+"
                +"\n"); 
         
-        ConsoleColors.printInYellow("Enter one of the above: ");
+        System.out.println("Enter one of the above: ");
         
         String valorOpcion = teclado.next();
         

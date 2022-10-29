@@ -55,5 +55,8 @@ public class AddBookInfoMenu {
             System.out.format("+-----------------------------+%n");
         }
         
+        System.out.println("press any to continue...");
+        new Scanner(System.in).nextLine();
+        
     }
 }
